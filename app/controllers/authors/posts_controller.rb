@@ -1,7 +1,8 @@
 module Authors
   class PostsController < AuthorsController
-    
     before_action :set_post, only: [:edit, :update, :destroy]
+    before_action :authenticate_author!
+    
     
     # GET /posts/1
     def show

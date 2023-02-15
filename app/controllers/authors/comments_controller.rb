@@ -3,6 +3,7 @@ module Authors
     
     before_action :set_post, only: [:create, :update, :destroy]
     before_action :set_comment, only: [:update, :destroy]
+    before_action :authenticate_author!
   
     # POST /comments
     def create

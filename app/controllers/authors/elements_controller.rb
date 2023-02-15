@@ -3,7 +3,7 @@ module Authors
     
     before_action :set_post
     before_action :set_element, only: [:show, :edit, :update, :destroy, :move]
-  
+    
     # POST /elements
     def create
       

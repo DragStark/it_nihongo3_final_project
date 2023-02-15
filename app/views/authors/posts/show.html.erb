@@ -3,7 +3,7 @@
   data-like-unlike-post-id='<%= @post.id %>'
   data-like-unlike-like-id='<%= @like.id %>'>
   
-  <%= link_to 'Back', root_path, class: 'btn btn-dark mb-3' %>
+  <%= link_to 'Back', home_index_path, class: 'btn btn-dark mb-3' %>
   <div class='d-flex align-items-center mb-3'>
     <h5 class='mr-3 mb-0'>Do you like this post?</h5>
     <%= form_with(model: [@post, @like], method: :post) do |form| %>

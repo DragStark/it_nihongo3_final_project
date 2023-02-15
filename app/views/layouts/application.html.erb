@@ -15,12 +15,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='bg-light author'>
+  <body class='bg-warning author'>
     <div class='container'>
-      
+      <div class="bg-info rounded">
       <nav class="navbar navbar-expand-lg bg-body-tertiary mt-3">
         <div class="container-fluid">
-          <%= link_to 'Blog Website', root_path, class: 'navbar-brand' %>
+         <%= link_to home_index_path do %>
+             <%= image_tag "logo-l.png", height: 100 %>
+         <% end %>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,27 +30,40 @@
             <ul class="navbar-nav">
               <% if author_signed_in? %>
                   <li class="nav-item">
-                    <%= link_to 'My Profile', authors_show_path, class: 'nav-link text-primary' %>
+                      <button class="btn btn-danger text-light">
+                          <%= link_to 'My Profile', authors_show_path, class: 'text-light font-weight-bold text-decoration-none' %>
+                        </button>
+                    
                   </li>
                   <li class="nav-item">
-                    <%= link_to 'My Posts', posts_path, class: 'nav-link text-primary' %>
+                      <button class="btn btn-danger text-light ml-2">
+                          <%= link_to 'My Posts', posts_path, class: 'text-light font-weight-bold text-decoration-none' %>
+                        </button>
+                    
                   </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to 'Sign Up', new_author_registration_path, class: 'nav-link' %>
+                  <button class="btn btn-danger text-light">
+                      <%= link_to 'Sign Up', new_author_registration_path, class: 'text-light font-weight-bold text-decoration-none' %>
+                  </button>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Log In', new_author_session_path, class: 'nav-link' %>
+                     <button class="btn btn-danger ml-2">
+                        <%=  link_to 'Log In', new_author_session_path, class: 'text-light font-weight-bold text-decoration-none' %>
+                     </button>
                 </li>
               <% end %>
             </ul>
           </div>
           <% if author_signed_in? %>
-            Hello, <%= current_author.name %>
-            <%= link_to 'Log Out', destroy_author_session_path, method: :delete, class: 'nav-link text-secondary' %>
+            <b class="text-light">Hello, <%= current_author.name %></b>
+            <button class="btn btn-danger ml-2">
+                <%= link_to 'Log Out', destroy_author_session_path, method: :delete, class: 'text-light font-weight-bold text-decoration-none' %>
+            </button>
           <% end %>
         </div>
       </nav>
+      </div>
       <hr>
       
       <%= yield %>
